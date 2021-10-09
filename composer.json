@@ -1,0 +1,26 @@
+{
+    "name" : "perf/twig-extensions",
+    "description" : "perf Twig extensions",
+    "license" : "mit",
+    "type": "library",
+    "require": {
+        "php": ">=7.4",
+        "phing/phing": "^2.17",
+        "symfony/property-access": "^5.3",
+        "twig/twig": "^3.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "perf\\TwigExtensions\\": "src"
+        }
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.10",
+        "phpunit/phpunit": "^9.5",
+        "sebastian/phpcpd": "^6.0",
+        "squizlabs/php_codesniffer": "^3.6"
+    }
+}
