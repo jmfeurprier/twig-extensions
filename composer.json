@@ -5,9 +5,11 @@
     "type": "library",
     "require": {
         "php": ">=7.4",
-        "phing/phing": "^2.17",
         "symfony/property-access": "^5.3",
         "twig/twig": "^3.0"
+    },
+    "suggest": {
+        "ext-intl": "Required for localized date and time formatting."
     },
     "config": {
         "sort-packages": true
@@ -18,6 +20,7 @@
         }
     },
     "require-dev": {
+        "phing/phing": "^2.17",
         "phpmd/phpmd": "^2.10",
         "phpunit/phpunit": "^9.5",
         "sebastian/phpcpd": "^6.0",

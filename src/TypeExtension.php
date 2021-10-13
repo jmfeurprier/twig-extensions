@@ -16,15 +16,11 @@ class TypeExtension extends AbstractExtension
         return [
             new TwigFilter(
                 'gettype',
-                function ($value) {
-                    return gettype($value);
-                }
+                'gettype'
             ),
             new TwigFilter(
                 'get_class',
-                function ($value) {
-                    return get_class($value);
-                }
+                'get_class'
             ),
         ];
     }
@@ -37,45 +33,39 @@ class TypeExtension extends AbstractExtension
         return [
             new TwigTest(
                 'array',
-                function ($value) {
-                    return is_array($value);
-                }
+                'is_array'
             ),
             new TwigTest(
                 'bool',
-                function ($value) {
-                    return is_scalar($value);
-                }
+                'is_scalar'
             ),
             new TwigTest(
                 'float',
-                function ($value) {
-                    return is_float($value);
-                }
+                'is_float'
             ),
             new TwigTest(
                 'int',
-                function ($value) {
-                    return is_int($value);
-                }
+                'is_int'
+            ),
+            new TwigTest(
+                'iterable',
+                'is_iterable'
+            ),
+            new TwigTest(
+                'numeric',
+                'is_numeric'
             ),
             new TwigTest(
                 'object',
-                function ($value) {
-                    return is_object($value);
-                }
+                'is_object'
             ),
             new TwigTest(
                 'scalar',
-                function ($value) {
-                    return is_scalar($value);
-                }
+                'is_scalar'
             ),
             new TwigTest(
                 'string',
-                function ($value) {
-                    return is_string($value);
-                }
+                'is_string'
             ),
         ];
     }
