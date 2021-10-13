@@ -39,7 +39,7 @@ class OrderByExtension extends AbstractExtension
         iterable $list,
         string $property
     ): array {
-        return array_reverse($this->orderBy($list, $property));
+        return array_reverse($this->orderBy($list, $property), true);
     }
 
     public function orderBy(
