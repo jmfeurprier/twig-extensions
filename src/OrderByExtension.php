@@ -15,6 +15,9 @@ class OrderByExtension extends AbstractExtension
         $this->propertyAccessor = $propertyAccessor;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getFilters()
     {
         return [
