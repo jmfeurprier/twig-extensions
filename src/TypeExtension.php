@@ -37,7 +37,7 @@ class TypeExtension extends AbstractExtension
             ),
             new TwigTest(
                 'bool',
-                'is_scalar'
+                'is_bool'
             ),
             new TwigTest(
                 'float',
