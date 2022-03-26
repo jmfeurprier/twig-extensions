@@ -8,6 +8,7 @@ use IntlDateFormatter;
 use perf\TwigExtensions\Exception\DateTimeExtensionException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 class DateTimeExtension extends AbstractExtension
 {
@@ -34,13 +35,29 @@ class DateTimeExtension extends AbstractExtension
         ];
     }
 
+    public function getFunctions()
+    {
+        return [
+            new TwigFunction(
+                'microtime',
+                [
+                    $this,
+                    'microtime'
+                ]
+            )
+        ];
+    }
+
     /**
      * @param IntlCalendar|DateTimeInterface $value
      *
      * @throws DateTimeExtensionException
      */
-    public function intlFormat($value, ?string $format = null, ?string $locale = null): string
-    {
+    public function intlFormat(
+        $value,
+        ?string $format = null,
+        ?string $locale = null
+    ): string {
         $this->assertIntlPhpExtensionInstalled();
 
         if (!($value instanceof IntlCalendar) && !($value instanceof DateTimeInterface)) {
@@ -65,5 +82,14 @@ class DateTimeExtension extends AbstractExtension
         if (!class_exists(IntlCalendar::class)) {
             throw new DateTimeExtensionException('PHP intl extension must be installed.');
         }
+    }
+
+    /**
+     * @return float|string
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     */
+    public function microtime(bool $asFloat = false)
+    {
+        return microtime($asFloat);
     }
 }
