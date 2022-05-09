@@ -5,13 +5,13 @@ namespace perf\TwigExtensions;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
-class OrderByExtensionTest extends TestCase
+class SortingExtensionTest extends TestCase
 {
-    private OrderByExtension $extension;
+    private SortingExtension $extension;
 
     protected function setUp(): void
     {
-        $this->extension = new OrderByExtension(
+        $this->extension = new SortingExtension(
             new PropertyAccessor()
         );
     }

@@ -6,7 +6,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class OrderByExtension extends AbstractExtension
+class SortingExtension extends AbstractExtension
 {
     private PropertyAccessorInterface $propertyAccessor;
 
@@ -21,6 +21,10 @@ class OrderByExtension extends AbstractExtension
     public function getFilters()
     {
         return [
+            new TwigFilter(
+                'ksort',
+                'ksort'
+            ),
             new TwigFilter(
                 'order_by',
                 [
