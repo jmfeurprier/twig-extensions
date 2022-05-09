@@ -23,7 +23,10 @@ class SortingExtension extends AbstractExtension
         return [
             new TwigFilter(
                 'ksort',
-                'ksort'
+                [
+                    $this,
+                    'ksort',
+                ]
             ),
             new TwigFilter(
                 'order_by',
@@ -40,6 +43,14 @@ class SortingExtension extends AbstractExtension
                 ]
             ),
         ];
+    }
+
+    public function ksort(
+        array $array
+    ): array {
+        ksort($array);
+
+        return $array;
     }
 
     public function orderByReverse(

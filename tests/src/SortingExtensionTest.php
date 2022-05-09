@@ -16,6 +16,35 @@ class SortingExtensionTest extends TestCase
         );
     }
 
+    public function testKsortWithEmptyCollection(): void
+    {
+        $collection = [];
+
+        $result = $this->extension->ksort($collection);
+
+        $this->assertSame([], $result);
+    }
+
+    public function testKsortWithNonEmptyCollection(): void
+    {
+        $collection = [
+            'b' => 123,
+            'c' => 234,
+            'a' => 345,
+        ];
+
+        $result = $this->extension->ksort($collection);
+
+        $this->assertSame(
+            [
+                'a' => 345,
+                'b' => 123,
+                'c' => 234,
+            ],
+            $result
+        );
+    }
+
     public function testOrderByWithEmptyCollection(): void
     {
         $collection = [];
