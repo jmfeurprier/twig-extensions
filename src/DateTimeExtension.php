@@ -1,11 +1,11 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions;
 
 use DateTimeInterface;
 use IntlCalendar;
 use IntlDateFormatter;
-use perf\TwigExtensions\Exception\DateTimeExtensionException;
+use Jmf\TwigExtensions\Exception\DateTimeExtensionException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;

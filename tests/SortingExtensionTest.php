@@ -1,7 +1,8 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions\Tests;
 
+use Jmf\TwigExtensions\SortingExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions;
 
-use perf\TwigExtensions\Exception\InlineExtensionException;
+use Jmf\TwigExtensions\Exception\InlineExtensionException;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

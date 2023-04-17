@@ -1,6 +1,6 @@
 <?php
 
-namespace perf\TwigExtensions\Exception;
+namespace Jmf\TwigExtensions\Exception;
 
 use Exception;
 

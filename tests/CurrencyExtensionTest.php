@@ -1,7 +1,8 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions\Tests;
 
+use Jmf\TwigExtensions\CurrencyExtension;
 use PHPUnit\Framework\TestCase;
 
 class CurrencyExtensionTest extends TestCase

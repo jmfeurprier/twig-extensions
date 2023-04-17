@@ -1,6 +1,6 @@
 {
-    "name" : "perf/twig-extensions",
-    "description" : "perf Twig extensions",
+    "name" : "jmf/twig-extensions",
+    "description" : "Collection of Twig extensions",
     "license" : "mit",
     "type": "library",
     "require": {
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "perf\\TwigExtensions\\": "src"
+            "Jmf\\TwigExtensions\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "perf\\TwigExtensions\\Tests\\": "tests"
+            "Jmf\\TwigExtensions\\Tests\\": "tests/"
         }
     }
 }

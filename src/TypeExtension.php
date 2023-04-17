@@ -1,6 +1,6 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;

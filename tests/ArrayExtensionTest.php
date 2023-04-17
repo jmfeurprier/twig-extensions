@@ -1,7 +1,8 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions\Tests;
 
+use Jmf\TwigExtensions\ArrayExtension;
 use PHPUnit\Framework\TestCase;
 
 class ArrayExtensionTest extends TestCase

@@ -1,8 +1,9 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions\Tests;
 
 use DateTime;
+use Jmf\TwigExtensions\DateTimeExtension;
 use PHPUnit\Framework\TestCase;
 
 class DateTimeExtensionTest extends TestCase

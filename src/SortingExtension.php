@@ -1,6 +1,6 @@
 <?php
 
-namespace perf\TwigExtensions;
+namespace Jmf\TwigExtensions;
 
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Twig\Extension\AbstractExtension;
