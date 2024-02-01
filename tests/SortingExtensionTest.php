@@ -3,6 +3,7 @@
 namespace Jmf\TwigExtensions\Tests;
 
 use Jmf\TwigExtensions\SortingExtension;
+use Override;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
@@ -10,6 +11,7 @@ class SortingExtensionTest extends TestCase
 {
     private SortingExtension $extension;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->extension = new SortingExtension(

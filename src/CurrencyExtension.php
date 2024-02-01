@@ -10,8 +10,10 @@ class CurrencyExtension extends AbstractExtension
 {
     public final const string PREFIX_DEFAULT = '';
 
-    private const int    DECIMALS_DEFAULT            = 2;
-    private const string DECIMAL_SEPARATOR_DEFAULT   = '.';
+    private const int DECIMALS_DEFAULT = 2;
+
+    private const string DECIMAL_SEPARATOR_DEFAULT = '.';
+
     private const string THOUSANDS_SEPARATOR_DEFAULT = ' ';
 
     public function __construct(

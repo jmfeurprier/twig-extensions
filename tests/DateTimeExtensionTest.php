@@ -4,12 +4,14 @@ namespace Jmf\TwigExtensions\Tests;
 
 use DateTime;
 use Jmf\TwigExtensions\DateTimeExtension;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class DateTimeExtensionTest extends TestCase
 {
     private DateTimeExtension $extension;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->extension = new DateTimeExtension();

@@ -53,7 +53,7 @@ class DateTimeExtension extends AbstractExtension
     ): string {
         $this->assertIntlPhpExtensionInstalled();
 
-        $locale = $locale ?? $this->locale;
+        $locale ??= $this->locale;
         $result = IntlDateFormatter::formatObject($value, $format, $locale);
 
         if (false === $result) {
