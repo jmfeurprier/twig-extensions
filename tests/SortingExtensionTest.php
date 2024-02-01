@@ -144,22 +144,19 @@ class SortingExtensionTest extends TestCase
         );
     }
 
-    /**
-     * @param mixed $value
-     */
     private function createObject(
         string $property,
-        $value
+        mixed $value
     ): object {
         return (object) $this->createArray($property, $value);
     }
 
     /**
-     * @param mixed $value
+     * @return array<string, mixed>
      */
     private function createArray(
         string $property,
-        $value
+        mixed $value
     ): array {
         return [
             $property => $value,

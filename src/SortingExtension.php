@@ -2,82 +2,88 @@
 
 namespace Jmf\TwigExtensions;
 
+use Override;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 class SortingExtension extends AbstractExtension
 {
-    private PropertyAccessorInterface $propertyAccessor;
+    public final const string PREFIX_DEFAULT = '';
 
-    public function __construct(PropertyAccessorInterface $propertyAccessor)
-    {
-        $this->propertyAccessor = $propertyAccessor;
+    public function __construct(
+        private readonly PropertyAccessorInterface $propertyAccessor,
+        private readonly string $functionPrefix = self::PREFIX_DEFAULT,
+    ) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getFilters()
+    #[Override]
+    public function getFilters(): iterable
     {
         return [
             new TwigFilter(
-                'ksort',
-                [
-                    $this,
-                    'ksort',
-                ]
+                "{$this->functionPrefix}ksort",
+                $this->ksort(...),
             ),
             new TwigFilter(
-                'order_by',
-                [
-                    $this,
-                    'orderBy',
-                ]
+                "{$this->functionPrefix}order_by",
+                $this->orderBy(...),
             ),
             new TwigFilter(
                 'order_by_reverse',
-                [
-                    $this,
-                    'orderByReverse',
-                ]
+                $this->orderByReverse(...),
             ),
         ];
     }
 
+    /**
+     * @param array<int|string, mixed> $array
+     *
+     * @return array<int|string, mixed>
+     */
     public function ksort(
-        array $array
+        array $array,
     ): array {
         ksort($array);
 
         return $array;
     }
 
+    /**
+     * @param array<int|string, array<string, mixed>|object> $array
+     *
+     * @return array<int|string, array<string, mixed>|object>
+     */
     public function orderByReverse(
-        iterable $list,
+        array $array,
         string $property
     ): array {
-        return array_reverse($this->orderBy($list, $property), true);
+        return array_reverse($this->orderBy($array, $property), true);
     }
 
+    /**
+     * @param array<int|string, array<string, mixed>|object> $array
+     *
+     * @return array<int|string, array<string, mixed>|object>
+     */
     public function orderBy(
-        iterable $list,
+        array $array,
         string $property
     ): array {
         $properties = [];
 
-        foreach ($list as $key => $listItem) {
+        foreach ($array as $key => $listItem) {
             $properties[$key] = $this->propertyAccessor->getValue($listItem, $property);
         }
 
         asort($properties);
 
-        $sortedList = [];
+        $ordered = [];
 
         foreach (array_keys($properties) as $key) {
-            $sortedList[$key] = $list[$key];
+            $ordered[$key] = $array[$key];
         }
 
-        return $sortedList;
+        return $ordered;
     }
 }

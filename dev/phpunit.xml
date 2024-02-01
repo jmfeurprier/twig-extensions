@@ -2,7 +2,7 @@
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit
   backupGlobals="false"
-  cacheDirectory=".phpunit.cache"
+  cacheDirectory="../var/cache/.phpunit.cache"
   colors="true"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
@@ -14,12 +14,12 @@
   </php>
   <source>
     <include>
-      <directory suffix=".php">src</directory>
+      <directory suffix=".php">../src</directory>
     </include>
   </source>
   <testsuites>
     <testsuite name="Project Test Suite">
-      <directory>tests</directory>
+      <directory>../tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>

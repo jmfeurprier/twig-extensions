@@ -6,63 +6,52 @@ use DateTimeInterface;
 use IntlCalendar;
 use IntlDateFormatter;
 use Jmf\TwigExtensions\Exception\DateTimeExtensionException;
+use Override;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class DateTimeExtension extends AbstractExtension
 {
-    private ?string $locale;
+    public final const string PREFIX_DEFAULT = '';
 
-    public function __construct(?string $locale = null)
-    {
-        $this->locale = $locale;
+    public function __construct(
+        private readonly ?string $locale = null,
+        private readonly string $functionPrefix = self::PREFIX_DEFAULT,
+    ) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getFilters(): array
+    #[Override]
+    public function getFilters(): iterable
     {
         return [
             new TwigFilter(
-                'intl_format',
-                [
-                    $this,
-                    'intlFormat',
-                ]
+                "{$this->functionPrefix}intl_format",
+                $this->intlFormat(...),
             ),
         ];
     }
 
-    public function getFunctions()
+    #[Override]
+    public function getFunctions(): iterable
     {
         return [
             new TwigFunction(
-                'microtime',
-                [
-                    $this,
-                    'microtime'
-                ]
-            )
+                "{$this->functionPrefix}microtime",
+                $this->microtime(...),
+            ),
         ];
     }
 
     /**
-     * @param IntlCalendar|DateTimeInterface $value
-     *
      * @throws DateTimeExtensionException
      */
     public function intlFormat(
-        $value,
+        IntlCalendar | DateTimeInterface $value,
         ?string $format = null,
         ?string $locale = null
     ): string {
         $this->assertIntlPhpExtensionInstalled();
-
-        if (!($value instanceof IntlCalendar) && !($value instanceof DateTimeInterface)) {
-            throw new DateTimeExtensionException('Invalid parameter provided.');
-        }
 
         $locale = $locale ?? $this->locale;
         $result = IntlDateFormatter::formatObject($value, $format, $locale);
@@ -85,10 +74,9 @@ class DateTimeExtension extends AbstractExtension
     }
 
     /**
-     * @return float|string
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
-    public function microtime(bool $asFloat = false)
+    public function microtime(bool $asFloat = false): string | float
     {
         return microtime($asFloat);
     }

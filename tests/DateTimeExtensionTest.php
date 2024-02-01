@@ -15,7 +15,7 @@ class DateTimeExtensionTest extends TestCase
         $this->extension = new DateTimeExtension();
     }
 
-    public function testIntlFormat()
+    public function testIntlFormat(): void
     {
         $dateTime = new DateTime('2021-10-11 12:34:56');
         $format   = 'cccc';
@@ -25,14 +25,14 @@ class DateTimeExtensionTest extends TestCase
         $this->assertSame('lundi', $result);
     }
 
-    public function testMicrotimeReturnsString()
+    public function testMicrotimeReturnsString(): void
     {
         $result = $this->extension->microtime(false);
 
         $this->assertIsString($result);
     }
 
-    public function testMicrotimeReturnsFloat()
+    public function testMicrotimeReturnsFloat(): void
     {
         $result = $this->extension->microtime(true);
 

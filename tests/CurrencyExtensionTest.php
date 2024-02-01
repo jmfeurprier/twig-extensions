@@ -11,7 +11,7 @@ class CurrencyExtensionTest extends TestCase
     {
         $currencyExtension = new CurrencyExtension();
 
-        $result = $currencyExtension->moneyAmount('1234.56');
+        $result = $currencyExtension->moneyAmount(1234.56);
 
         $this->assertSame('1 234.56', $result);
     }
@@ -24,7 +24,7 @@ class CurrencyExtensionTest extends TestCase
             '.'
         );
 
-        $result = $currencyExtension->moneyAmount('1234.56');
+        $result = $currencyExtension->moneyAmount(1234.56);
 
         $this->assertSame('1.234,560', $result);
     }
